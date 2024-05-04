@@ -8,7 +8,7 @@
 } @ inputs:
 
 {
-   modules = [
-   
-   ]
-}
+  modules = [
+
+  ]
+    }

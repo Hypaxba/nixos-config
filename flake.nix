@@ -2,7 +2,12 @@
   description = "NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-23.11";
+    nixpkgs = {
+      type = "github";
+      owner = "NixOS";
+      repo = "nixpkgs";
+      ref = "nixos-23.11";
+    };
     nixpkgsUnstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager.url = "github:nix-community/home-manager?ref=release-23.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -15,12 +20,13 @@
       pkgImport = pkgs: system:
         import pkgs {
           inherit system;
-          config.allowUnFree = true;
+          config.allowUnfree = true;
         };
       pkgset = {
         pkgs = pkgImport nixpkgs system;
         pkgsUnstable = pkgImport nixpkgsUnstable system;
       };
+      inherit (pkgset) pkgs pkgsUnstable;
     in
     {
       nixosConfigurations = {

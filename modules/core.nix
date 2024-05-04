@@ -1,9 +1,9 @@
-{ pkgs, ...}: {
-  
+{ pkgs, ... }: {
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking.networkmanager.enable = true;
-  
+
   time.timeZone = "Europe/Paris";
 
   i18n.defaultLocale = "en_US.UTF-8";
@@ -20,8 +20,6 @@
     LC_TIME = "fr_FR.UTF-8";
   };
 
-  programs.hyprland.enable = true;
-  
   console.keyMap = "fr";
 
   sound.enable = true;
@@ -36,17 +34,42 @@
 
   programs.zsh.enable = true;
 
+  services.xserver.enable = true;
+
+  services.xserver.displayManager.sddm = {
+    enable = true;
+  };
+  services.xserver.desktopManager.plasma5.enable = true;
+
+  programs.hyprland.enable = true;
+
   users.users.baptiste = {
-   isNormalUser = true;
-   description = "baptiste";
-   shell = pkgs.zsh;
-   extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" "ubridge"];
-   packages = with pkgs; [
-     firefox
-     vim
-     xterm
-     alacritty
-   ];
+    isNormalUser = true;
+    description = "baptiste";
+    shell = pkgs.zsh;
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" "ubridge" ];
+    packages = with pkgs; [
+      firefox
+      vim
+      xterm
+      alacritty
+      discord
+      kitty
+      pavucontrol
+      hyprpaper
+      pinentry-curses
+    ];
+  };
+
+  fonts.packages = with pkgs; [
+    fira-code
+    fira-code-nerdfont
+  ];
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
   };
 
   system.stateVersion = "23.11";

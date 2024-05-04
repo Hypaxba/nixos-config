@@ -1,11 +1,11 @@
-{ pkgs, monitors,... }: {
+{ pkgs, monitors, hyprpaperConf, ... }: {
 
   home = {
     username = "baptiste";
     homeDirectory = "/home/baptiste";
     stateVersion = "23.11";
     file."wallpapers".source = ../dot/wallpapers;
-    file.".config/hypr/hyprpaper.conf".source = ../dot/hyprpaper.conf;
+    file.".config/hypr/hyprpaper.conf".source = ../dot/hyprpaper.${hyprpaperConf}conf;
   };
   programs.home-manager.enable = true;
 

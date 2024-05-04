@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, monitors,... }: {
 
   home = {
     username = "baptiste";
@@ -11,6 +11,7 @@
 
   home.packages = with pkgs; [
     gnupg
+    thunderbird
   ];
 
   programs.git = {
@@ -24,6 +25,7 @@
   };
 
   programs.direnv = {
+    enable = true;
     nix-direnv.enable = true;
     enableZshIntegration = true;
   };
@@ -117,10 +119,7 @@
         kb_layout = "fr";
         follow_mouse = 1;
       };
-      monitor = [
-        "HDMI-A-1, 1920x1080@60, 0x0, 1"
-        "DP-1, 2560x1080@60, 1920x0, 1"
-      ];
+      monitor = monitors;
       exec-once = "waybar & hyprpaper";
     };
   };

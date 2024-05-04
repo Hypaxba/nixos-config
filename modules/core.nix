@@ -43,6 +43,13 @@
 
   programs.hyprland.enable = true;
 
+  programs.gnupg = {
+    agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
+  };
+
   users.users.baptiste = {
     isNormalUser = true;
     description = "baptiste";

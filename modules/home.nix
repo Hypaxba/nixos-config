@@ -67,6 +67,52 @@
           "$mod SHIFT, code:18, movetoworkspace, 9"
           "$mod SHIFT, code:19, movetoworkspace, 10"
         ];
+      bindm = [
+       "$mod, mouse:272, movewindow"
+       "$mod, mouse:273, resizewindow"
+      ];
+      general = {
+        gaps_in = 7;
+        gaps_out = 15;
+        border_size = 3;
+        resize_on_border = "yes";
+        extend_border_grab_area = 15;
+        layout = "dwindle";
+      };
+      decoration = {
+        rounding = 10;
+        blur = {
+          enabled = "true";
+          size = 3;
+          new_optimizations = "true";
+          passes = 1;
+        };
+        drop_shadow = "yes";
+        shadow_range = 4;
+        shadow_render_power = 3;
+      };
+      animations = {
+        enabled = "yes";
+        bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
+        animation = [
+          "windows, 1, 7, myBezier"
+          "windowsOut, 1, 7, default, popin 80%"
+          "border, 1, 10, default"
+          "borderangle, 1, 8, default"
+          "fade, 1, 7, default"
+          "workspaces, 1, 6, default, slidevert"
+        ];
+      };
+      dwindle = {
+        pseudotile = "yes";
+        preserve_split = "yes";
+      };
+      master = {
+        new_is_master = "true";
+      };
+      windowrule = [
+        "opacity 0.9 0.7, ^(kitty)$"
+      ];
       input = {
         kb_layout = "fr";
         follow_mouse = 1;
@@ -211,7 +257,7 @@
       plugins = [ "git" "history" ];
       theme = "robbyrussell";
     };
-    envExtra = ''
+    initExtra = ''
       export GPG_TTY=$TTY
       export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
       gpgconf --launch gpg-agent

@@ -33,6 +33,7 @@
         desktop = lib.nixosSystem (import ./desktop.nix { inherit lib system pkgset home-manager; });
         laptop = lib.nixosSystem (import ./laptop.nix { inherit lib system pkgset home-manager; });
       };
+      formatter.${system} = pkgs.nixpkgs-fmt;
     };
 
 }

@@ -12,6 +12,8 @@
   home.packages = with pkgs; [
     gnupg
     thunderbird
+    kubectl
+    wireguard-tools
   ];
 
   programs.git = {
@@ -70,8 +72,8 @@
           "$mod SHIFT, code:19, movetoworkspace, 10"
         ];
       bindm = [
-       "$mod, mouse:272, movewindow"
-       "$mod, mouse:273, resizewindow"
+        "$mod, mouse:272, movewindow"
+        "$mod, mouse:273, resizewindow"
       ];
       general = {
         gaps_in = 7;
@@ -245,6 +247,7 @@
       ll = "ls -l";
       update = "sudo nixos-rebuild switch";
       k = "kubectl";
+      kcx = "kubectl config use-context";
     };
     history = {
       expireDuplicatesFirst = true;

@@ -6,6 +6,8 @@
     stateVersion = "23.11";
     file."wallpapers".source = ../dot/wallpapers;
     file.".config/hypr/hyprpaper.conf".source = ../dot/hyprpaper.${hyprpaperConf}conf;
+    file.".config/hypr/hypridle.conf".source = ../dot/hypridle.conf;
+    file.".config/hypr/hyprlock.conf".source = ../dot/hyprlock.conf;
   };
   programs.home-manager.enable = true;
 
@@ -42,6 +44,8 @@
           "$mod, F, exec, firefox"
           "$mod, RETURN, exec, kitty"
           "$mod, Q, killactive,"
+          "$mod, L, exec, hyprlock"
+          "$mod SHIFT, S, exec, watershot --copy path $HOME/Screenshots"
           "$mod, M, exit,"
           "$mod, left, movefocus, l"
           "$mod, right, movefocus, r"
@@ -122,7 +126,7 @@
         follow_mouse = 1;
       };
       monitor = monitors;
-      exec-once = "waybar & hyprpaper";
+      exec-once = "waybar & hyprpaper & hypridle";
     };
   };
 
@@ -248,6 +252,7 @@
       update = "sudo nixos-rebuild switch";
       k = "kubectl";
       kcx = "kubectl config use-context";
+      nr = "nix run";
     };
     history = {
       expireDuplicatesFirst = true;

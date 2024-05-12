@@ -12,6 +12,9 @@ let
     "DP-1, 2560x1080@60, 1920x0, 1"
   ];
   hyprpaperConf = "";
+  modWaybar = { };
+  modLeft = [ ];
+  modRight = [ ];
 in
 {
   modules = [
@@ -23,7 +26,7 @@ in
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
       home-manager.users.baptiste = import ./modules/home.nix;
-      home-manager.extraSpecialArgs = { inherit monitors hyprpaperConf; };
+      home-manager.extraSpecialArgs = { inherit monitors hyprpaperConf modLeft modRight modWaybar; };
     }
   ];
   pkgs = pkgset.pkgs;

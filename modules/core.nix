@@ -1,4 +1,4 @@
-{ pkgs, ... } @ inputs :{
+{ pkgs, ... } @ inputs: {
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -53,7 +53,7 @@
   virtualisation.docker.enable = true;
 
   services.gnome.gnome-keyring.enable = true;
-  
+
   users.users.baptiste = {
     isNormalUser = true;
     description = "baptiste";

@@ -16,6 +16,8 @@
     thunderbird
     kubectl
     wireguard-tools
+    pulseaudio
+    playerctl
   ];
 
   programs.git = {
@@ -74,6 +76,12 @@
           "$mod SHIFT, code:17, movetoworkspace, 8"
           "$mod SHIFT, code:18, movetoworkspace, 9"
           "$mod SHIFT, code:19, movetoworkspace, 10"
+          ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%"
+          ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%"
+          ", XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle"
+          ", XF86AudioPlay, exec, playerctl play-pause"
+          ", XF86AudioNext, exec, playerctl next"
+          ", XF86AudioPrev, exec, playerctl prev"
         ];
       bindm = [
         "$mod, mouse:272, movewindow"
@@ -126,7 +134,7 @@
         follow_mouse = 1;
       };
       monitor = monitors;
-      exec-once = "waybar & hyprpaper & hypridle";
+      exec-once = "waybar & hyprpaper & hypridle & protonmail-bridge --noninteractive";
     };
   };
 

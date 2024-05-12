@@ -50,6 +50,10 @@
     };
   };
 
+  virtualisation.docker.enable = true;
+
+  services.gnome.gnome-keyring.enable = true;
+  
   users.users.baptiste = {
     isNormalUser = true;
     description = "baptiste";
@@ -67,6 +71,7 @@
       pinentry-curses
       inputs.pkgsUnstable.hyprlock
       inputs.pkgsUnstable.hypridle
+      protonmail-bridge
     ];
   };
 

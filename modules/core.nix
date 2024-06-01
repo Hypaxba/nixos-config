@@ -36,9 +36,8 @@
 
   services.xserver.enable = true;
 
-  services.xserver.displayManager.sddm = {
-    enable = true;
-  };
+  services.displayManager.sddm.enable = true;
+
   services.xserver.desktopManager.plasma5.enable = true;
 
   programs.hyprland.enable = true;
@@ -69,8 +68,8 @@
       pavucontrol
       hyprpaper
       pinentry-curses
-      inputs.pkgsUnstable.hyprlock
-      inputs.pkgsUnstable.hypridle
+      hyprlock
+      hypridle
       protonmail-bridge
     ];
   };

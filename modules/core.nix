@@ -71,6 +71,7 @@
       hyprlock
       hypridle
       protonmail-bridge
+      teams-for-linux
     ];
   };
 

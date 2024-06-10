@@ -18,6 +18,7 @@
     wireguard-tools
     pulseaudio
     playerctl
+    mako
   ];
 
   programs.git = {
@@ -119,6 +120,9 @@
           "workspaces, 1, 6, default, slidevert"
         ];
       };
+      workspace = [
+        "10, border:false, rounding:false"
+      ];
       dwindle = {
         pseudotile = "yes";
         preserve_split = "yes";
@@ -129,12 +133,18 @@
       windowrule = [
         "opacity 0.9 0.7, ^(kitty)$"
       ];
+      windowrulev2 = [
+        "fullscreen,class:^steam_app_[0-9]+$"
+        "stayfocused,class:^steam_app_[0-9]+$"
+        "monitor 1,class:^steam_app_[0-9]+$"
+        "workspace 10,class:^steam_app_[0-9]+$"
+      ];
       input = {
         kb_layout = "fr";
         follow_mouse = 1;
       };
       monitor = monitors;
-      exec-once = "waybar & hyprpaper & hypridle & protonmail-bridge --noninteractive";
+      exec-once = "waybar & hyprpaper & hypridle & mako & protonmail-bridge --noninteractive";
     };
   };
 

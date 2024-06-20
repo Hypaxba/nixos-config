@@ -72,6 +72,7 @@
       hypridle
       protonmail-bridge
       teams-for-linux
+      chromium
     ];
   };
 

@@ -148,6 +148,16 @@
     };
   };
 
+  programs.kitty = {
+    enable = true;
+    settings = {
+      font_family = "0xProto Regular";
+      bold_font = "auto";
+      italic_font = "auto";
+      bold_italic_font = "auto";
+    };
+  };
+
 
   programs.waybar = {
     enable = true;

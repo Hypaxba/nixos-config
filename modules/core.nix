@@ -79,6 +79,7 @@
   fonts.packages = with pkgs; [
     fira-code
     fira-code-nerdfont
+    _0xproto
   ];
 
   nix.gc = {

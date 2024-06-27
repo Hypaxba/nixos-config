@@ -19,6 +19,7 @@
     pulseaudio
     playerctl
     mako
+    hyprshot
   ];
 
   programs.git = {
@@ -83,6 +84,9 @@
           ", XF86AudioPlay, exec, playerctl play-pause"
           ", XF86AudioNext, exec, playerctl next"
           ", XF86AudioPrev, exec, playerctl prev"
+          "$mod SHIFT, S, exec, hyprshot -m region "
+          "$mod , PRINT, exec, hyprshot -m window "
+          ", PRINT, exec, hyprshot -m output "
         ];
       bindm = [
         "$mod, mouse:272, movewindow"

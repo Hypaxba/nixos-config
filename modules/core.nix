@@ -73,7 +73,15 @@
       protonmail-bridge
       teams-for-linux
       chromium
+      grim
+      xdg-desktop-portal-hyprland
+      wl-clipboard
     ];
+  };
+
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
   };
 
   fonts.packages = with pkgs; [

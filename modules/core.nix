@@ -76,6 +76,8 @@
       grim
       xdg-desktop-portal-hyprland
       wl-clipboard
+      wireshark
+      stern
     ];
   };
 
@@ -99,4 +101,6 @@
   system.stateVersion = "23.11";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  programs.steam.enable = true;
 }

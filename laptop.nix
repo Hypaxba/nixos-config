@@ -86,6 +86,7 @@ in
   modules = [
     ./modules/core.nix
     ./modules/hardware-laptop.nix
+    ./modules/virt.nix
     ./modules/laptop.nix
     home-manager.nixosModules.home-manager
     {

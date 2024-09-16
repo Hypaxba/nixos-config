@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgsUnstable, ... }:
 
 {
 
@@ -7,5 +7,11 @@
     steamtinkerlaunch
     gamescope
     mixxx
+    prismlauncher
+    atlauncher
+    jdk17
+    pkgsUnstable.nexusmods-app
   ];
+
+  hardware.xone.enable = true;
 }

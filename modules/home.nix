@@ -137,9 +137,6 @@
         pseudotile = "yes";
         preserve_split = "yes";
       };
-      master = {
-        new_is_master = "true";
-      };
       windowrule = [
         "opacity 0.9 0.7, ^(kitty)$"
       ];
@@ -148,6 +145,10 @@
         "stayfocused,class:^steam_app_[0-9]+$"
         "monitor 1,class:^steam_app_[0-9]+$"
         "workspace 10,class:^steam_app_[0-9]+$"
+        "fullscreen,class:^Ragnamod VII$"
+        "stayfocused,class:^Ragnamod VII$"
+        "monitor 1,class:^Ragnamod VII$"
+        "workspace 10,class:^Ragnamod VII+$"
       ];
       input = {
         kb_layout = "fr";

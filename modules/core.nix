@@ -57,7 +57,7 @@
     isNormalUser = true;
     description = "baptiste";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" "ubridge" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" "ubridge" "wireshark"];
     packages = with pkgs; [
       firefox
       vim
@@ -78,6 +78,9 @@
       wl-clipboard
       wireshark
       stern
+      apache-directory-studio
+      vesktop
+      wireshark
     ];
   };
 

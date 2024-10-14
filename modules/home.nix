@@ -35,6 +35,11 @@
       key = "0F52C374F0E6FA6BE68140D0A6A2FCF37E96351E";
       signByDefault = true;
     };
+    config = {
+      pull = {
+        rebase = "true";
+      };
+    };
   };
 
   programs.direnv = {

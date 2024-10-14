@@ -80,6 +80,7 @@
       vesktop
       wireshark
       wireguard-tools
+      ciscoPacketTracer8
     ];
   };
 

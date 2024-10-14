@@ -8,6 +8,7 @@
 
   users.users.baptiste.packages = with pkgs; [
     bluez
+    desmume
   ];
 
 }

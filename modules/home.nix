@@ -408,6 +408,9 @@
         proxyJump = "play-bastion";
         user = "root";
       };
+      "*.epita.test" = {
+        user = "root";
+      };
       "*.lre.openstack.epita.fr" = {
         proxyJump = "lre-bastion";
         user = "root";

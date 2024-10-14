@@ -75,11 +75,11 @@
       grim
       xdg-desktop-portal-hyprland
       wl-clipboard
-      wireshark
       stern
       apache-directory-studio
       vesktop
       wireshark
+      wireguard-tools
     ];
   };
 

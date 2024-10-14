@@ -17,6 +17,11 @@
 
   networking.interfaces."enp6s0".useDHCP = true;
 
+  services.dnsmasq = {
+    enable = true;
+    settings.server = ["/test/10.243.117.7"];
+  };
+
   #vm bridge
   #networking.bridges = {
   #   br0 = {

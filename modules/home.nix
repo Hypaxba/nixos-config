@@ -21,7 +21,6 @@
     gnupg
     thunderbird
     kubectl
-    wireguard-tools
     pulseaudio
     playerctl
     mako

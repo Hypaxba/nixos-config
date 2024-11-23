@@ -372,22 +372,12 @@
 
       "gitlab.cri.epita.fr" = lib.hm.dag.entryBefore [ "*.cri.epita.fr" ] {
         proxyJump = "none";
-        extraOptions = {
-          GSSAPIAuthentication = "yes";
-        };
       };
       "git.forge.epita.fr" = lib.hm.dag.entryBefore [ "*.forge.epita.fr" ] {
         proxyJump = "none";
-        extraOptions = {
-          GSSAPIAuthentication = "yes";
-        };
       };
       "ssh.cri.epita.fr" = lib.hm.dag.entryBefore [ "*.cri.epita.fr" ] {
         proxyJump = "none";
-        extraOptions = {
-          GSSAPIAuthentication = "yes";
-          GSSAPIDelegateCredentials = "yes";
-        };
       };
 
       "*.cri.epita.fr" = {

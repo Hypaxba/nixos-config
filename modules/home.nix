@@ -35,11 +35,6 @@
       key = "0F52C374F0E6FA6BE68140D0A6A2FCF37E96351E";
       signByDefault = true;
     };
-    config = {
-      pull = {
-        rebase = "true";
-      };
-    };
   };
 
   programs.direnv = {
@@ -118,9 +113,6 @@
           new_optimizations = "true";
           passes = 1;
         };
-        drop_shadow = "yes";
-        shadow_range = 4;
-        shadow_render_power = 3;
       };
       animations = {
         enabled = "yes";
@@ -307,6 +299,7 @@
       k = "kubectl";
       kcx = "kubectl config use-context";
       nr = "nix run";
+      ssh = "kitty +kitten ssh";
     };
     history = {
       expireDuplicatesFirst = true;

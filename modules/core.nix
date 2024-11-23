@@ -21,7 +21,6 @@
 
   console.keyMap = "fr";
 
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -80,7 +79,7 @@
       vesktop
       wireshark
       wireguard-tools
-      ciscoPacketTracer8
+      xwaylandvideobridge
     ];
   };
 

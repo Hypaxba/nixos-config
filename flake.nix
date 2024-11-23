@@ -6,10 +6,10 @@
       type = "github";
       owner = "NixOS";
       repo = "nixpkgs";
-      ref = "nixos-24.05";
+      ref = "nixos-24.11";
     };
     nixpkgsUnstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    home-manager.url = "github:nix-community/home-manager?ref=release-24.05";
+    home-manager.url = "github:nix-community/home-manager?ref=release-24.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 

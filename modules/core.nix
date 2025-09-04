@@ -21,7 +21,7 @@
 
   console.keyMap = "fr";
 
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -36,7 +36,8 @@
 
   services.displayManager.sddm.enable = true;
 
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.desktopManager.plasma6.enable = true;
+
 
   programs.hyprland.enable = true;
 
@@ -61,25 +62,19 @@
       vim
       xterm
       alacritty
-      discord
       kitty
       pavucontrol
       hyprpaper
       pinentry-curses
       hyprlock
       hypridle
-      protonmail-bridge
-      teams-for-linux
       chromium
       grim
-      xdg-desktop-portal-hyprland
       wl-clipboard
       stern
-      apache-directory-studio
       vesktop
       wireshark
       wireguard-tools
-      xwaylandvideobridge
     ];
   };
 
@@ -90,7 +85,7 @@
 
   fonts.packages = with pkgs; [
     fira-code
-    fira-code-nerdfont
+    nerd-fonts.fira-code
     _0xproto
   ];
 

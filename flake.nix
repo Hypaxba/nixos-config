@@ -6,10 +6,10 @@
       type = "github";
       owner = "NixOS";
       repo = "nixpkgs";
-      ref = "nixos-24.11";
+      ref = "nixos-25.05";
     };
     nixpkgsUnstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    home-manager.url = "github:nix-community/home-manager?ref=release-24.11";
+    home-manager.url = "github:nix-community/home-manager?ref=release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -32,6 +32,7 @@
       nixosConfigurations = {
         desktop = lib.nixosSystem (import ./desktop.nix { inherit lib system pkgset home-manager; });
         laptop = lib.nixosSystem (import ./laptop.nix { inherit lib system pkgset home-manager; });
+        work-laptop = lib.nixosSystem (import ./work-laptop.nix { inherit lib system pkgset home-manager; });
       };
       formatter.${system} = pkgs.nixpkgs-fmt;
     };

@@ -1,8 +1,14 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, pkgsTeleport, ... }:
 {
+
+  hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
   services.thermald.enable = true;
+
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+             "slack" "1password" "terraform" "pritunl-client" "vscode" 
+         ];
 
   users.users.baptiste.packages = with pkgs; [
     bluez
@@ -14,14 +20,28 @@
     postgresql
     kubectx
     kubectl-view-secret
-    teleport
+    pkgsTeleport.teleport_12
     azure-cli
     terraform
+    kdePackages.xwaylandvideobridge
+    kind
+    k9s
   ];
   
   systemd = { packages = [ pkgs.pritunl-client ]; targets = { multi-user = { wants = [ "pritunl-client.service" ]; }; }; }; 
-  
-  
+
+
+  xdg = {
+  portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk
+    ];
+  };
+};
+
+  programs.xwayland.enable = true;
 
   system.stateVersion = lib.mkForce "25.05";
 

@@ -6,7 +6,7 @@
 } @ inputs:
 
 let
-  inherit (pkgset) pkgsUnstable;
+  inherit (pkgset) pkgsUnstable pkgsTeleport;
   monitors = [
     "eDP-1, 2160x1440@60, 0x0, 1"
   ];
@@ -96,7 +96,6 @@ in
       home-manager.extraSpecialArgs = { inherit monitors hyprpaperConf modLeft modRight modWaybar; };
     }
   ];
-  pkgs = pkgset.pkgs;
-  specialArgs = { inherit pkgsUnstable; };
+  specialArgs = { inherit pkgsUnstable pkgsTeleport; };
   system = system;
 }

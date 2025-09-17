@@ -11,9 +11,10 @@
     nixpkgsUnstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     home-manager.url = "github:nix-community/home-manager?ref=release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs-teleport12.url = "github:NixOS/nixpkgs/a0405f0aa64994236abdf558ba7739df9dbe2391";
   };
 
-  outputs = { self, nixpkgs, nixpkgsUnstable, home-manager, ... } @ inputs:
+  outputs = { self, nixpkgs, nixpkgsUnstable, home-manager, nixpkgs-teleport12, ... } @ inputs:
     let
       system = "x86_64-linux";
       inherit (nixpkgs) lib;
@@ -25,8 +26,9 @@
       pkgset = {
         pkgs = pkgImport nixpkgs system;
         pkgsUnstable = pkgImport nixpkgsUnstable system;
+        pkgsTeleport = pkgImport nixpkgs-teleport12 system;
       };
-      inherit (pkgset) pkgs pkgsUnstable;
+      inherit (pkgset) pkgs pkgsUnstable pkgsTeleport;
     in
     {
       nixosConfigurations = {

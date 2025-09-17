@@ -99,5 +99,5 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  programs.steam.enable = true;
+  #programs.steam.enable = true;
 }

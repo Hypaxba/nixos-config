@@ -1,4 +1,4 @@
-{ pkgs, lib, pkgsTeleport, ... }:
+{ pkgs, lib, pkgsTeleport, pkgsUnstable, ... }:
 {
 
   hardware.bluetooth.enable = true;
@@ -7,7 +7,7 @@
   services.thermald.enable = true;
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-             "slack" "1password" "terraform" "pritunl-client" "vscode" 
+             "slack" "1password" "terraform" "pritunl-client" "vscode" "vault" "cursor"
          ];
 
   users.users.baptiste.packages = with pkgs; [
@@ -26,6 +26,20 @@
     kdePackages.xwaylandvideobridge
     kind
     k9s
+    jq
+    vault
+    fzf
+    uv
+    python314
+    devenv
+    kubernetes-helm
+    krew
+    go-swagger
+    kubectl-node-shell
+    pkgsUnstable.code-cursor
+    argo-workflows
+    azure-storage-azcopy
+    gh
   ];
   
   systemd = { packages = [ pkgs.pritunl-client ]; targets = { multi-user = { wants = [ "pritunl-client.service" ]; }; }; }; 

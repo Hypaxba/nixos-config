@@ -32,6 +32,10 @@
     enable = true;
     userEmail = "baptiste.f@padoa-group.com";
     userName = "Baptiste Fontaine";
+    extraConfig = {
+      push.autoSetupRemote = true;
+      pull.rebase = true;
+    };
   };
 
   programs.direnv = {
@@ -295,8 +299,12 @@
       update = "sudo nixos-rebuild switch";
       k = "kubectl";
       kcx = "kubectl config use-context";
+      kns = "kubectl config set-context --current --namespace";
+      kgp = "kubectl get pods";
+      kl = "kubectl logs";
       nr = "nix run";
       ssh = "kitty +kitten ssh";
+      lr = "az acr login -n padoa";
     };
     history = {
       expireDuplicatesFirst = true;
@@ -317,6 +325,14 @@
       EDITOR=vim
     '';
   };
+
+   programs.atuin = {
+    enable = true;
+    enableZshIntegration = true;
+    daemon = {
+      enable = true;
+    };
+   };
 
   programs.ssh = {
     enable = true;

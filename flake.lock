@@ -37,6 +37,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-teleport15": {
+      "locked": {
+        "lastModified": 1740063201,
+        "narHash": "sha256-IFUbBwfb5vGHgt+i3JGXCu7w6PnGrTpBr1Ng52DhHPU=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "8d62b09309bee7d119508190e4f712041265a5d6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "8d62b09309bee7d119508190e4f712041265a5d6",
+        "type": "github"
+      }
+    },
     "nixpkgsUnstable": {
       "locked": {
         "lastModified": 1764384123,
@@ -57,6 +73,7 @@
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-teleport15": "nixpkgs-teleport15",
         "nixpkgsUnstable": "nixpkgsUnstable"
       }
     }

@@ -13,8 +13,9 @@
 
   home.pointerCursor = {
     gtk.enable = true;
-    name = "Vanilla-DMZ";
-    package = pkgs.vanilla-dmz;
+    name = "Bibata-Modern-Classic";
+    package = pkgs.bibata-cursors;
+    size = 22;
   };
 
   home.packages = with pkgs; [
@@ -30,7 +31,7 @@
 
   programs.git = {
     enable = true;
-    userEmail = "baptiste@forge.epita.fr";
+    userEmail = "baptiste.f@padoa-group.com";
     userName = "Baptiste Fontaine";
     signing = {
       key = "0F52C374F0E6FA6BE68140D0A6A2FCF37E96351E";
@@ -298,9 +299,13 @@
       ll = "ls -l";
       update = "sudo nixos-rebuild switch";
       k = "kubectl";
-      kcx = "kubectl config use-context";
+      kcx = "kubectx";
+      #kns = "kubectl config set-context --current --namespace";
+      kgp = "kubectl get pods";
+      kl = "kubectl logs";
       nr = "nix run";
       ssh = "kitty +kitten ssh";
+      lr = "az acr login -n padoa";
     };
     history = {
       expireDuplicatesFirst = true;
@@ -312,7 +317,7 @@
       plugins = [ "git" "history" ];
       theme = "robbyrussell";
     };
-    initExtra = ''
+    initContent = ''
       export GPG_TTY=$TTY
       export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
       gpgconf --launch gpg-agent
@@ -322,100 +327,18 @@
     '';
   };
 
+   programs.atuin = {
+    enable = true;
+    enableZshIntegration = true;
+    daemon = {
+      enable = true;
+    };
+   };
+
   programs.ssh = {
     enable = true;
     forwardAgent = false;
     controlMaster = "yes";
     controlPersist = "10m";
-    matchBlocks = {
-
-      # CRI
-      "fw-cri" = {
-        hostname = "91.243.117.211";
-        user = "root";
-      };
-      "sw-core-cri" = {
-        hostname = "192.168.200.240";
-        user = "manager";
-        extraOptions = {
-          "HostKeyAlgorithms" = "+ssh-rsa";
-          "KexAlgorithms" = "diffie-hellman-group14-sha1";
-        };
-      };
-      "sw-rack-d-cri" = {
-        hostname = "192.168.200.74";
-        user = "admin";
-        extraOptions = {
-          "HostKeyAlgorithms" = "+ssh-rsa";
-        };
-      };
-      "sw-mgmt-cri" = {
-        hostname = "192.168.200.241";
-        user = "manager";
-        extraOptions = {
-          "HostKeyAlgorithms" = "+ssh-rsa";
-          "KexAlgorithms" = "diffie-hellman-group1-sha1";
-        };
-      };
-      "os-bastion" = {
-        hostname = "bastion.iaas.cri.epita.fr";
-        user = "root";
-        port = 2222;
-      };
-      "play-bastion" = {
-        hostname = "bastion.cri-playground.iaas.epita.fr";
-        user = "root";
-      };
-      "lre-bastion" = {
-        hostname = "admin-svc.lre.iaas.epita.fr";
-        user = "root";
-      };
-
-      "gitlab.cri.epita.fr" = lib.hm.dag.entryBefore [ "*.cri.epita.fr" ] {
-        proxyJump = "none";
-      };
-      "git.forge.epita.fr" = lib.hm.dag.entryBefore [ "*.forge.epita.fr" ] {
-        proxyJump = "none";
-      };
-      "ssh.cri.epita.fr" = lib.hm.dag.entryBefore [ "*.cri.epita.fr" ] {
-        proxyJump = "none";
-      };
-
-      "*.cri.epita.fr" = {
-        proxyJump = "fw-cri";
-        user = "root";
-      };
-      "*.forge.epita.fr" = {
-        proxyJump = "fw-cri";
-        user = "root";
-      };
-      "*.cri.openstack.epita.fr" = {
-        proxyJump = "os-bastion";
-        user = "root";
-      };
-      "*.cri_playground.openstack.epita.fr" = {
-        proxyJump = "play-bastion";
-        user = "root";
-      };
-      "*.epita.test" = {
-        user = "root";
-      };
-      "*.lre.openstack.epita.fr" = {
-        proxyJump = "lre-bastion";
-        user = "root";
-      };
-      "*.3ie.fr" = {
-        proxyJump = "fw-cri";
-        user = "root";
-      };
-      "3ie-bastion" = {
-        hostname = "bastion.iaas.3ie.epita.fr";
-        user = "root";
-      };
-      "*.3ie.openstack.epita.fr" = {
-        proxyJump = "3ie-bastion";
-        user = "root";
-      };
-    };
   };
 }  

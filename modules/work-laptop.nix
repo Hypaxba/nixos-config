@@ -23,7 +23,6 @@
     pkgsTeleport.teleport_15
     azure-cli
     terraform
-    kdePackages.xwaylandvideobridge
     kind
     k9s
     jq

@@ -298,8 +298,8 @@
       ll = "ls -l";
       update = "sudo nixos-rebuild switch";
       k = "kubectl";
-      kcx = "kubectl config use-context";
-      kns = "kubectl config set-context --current --namespace";
+      kcx = "kubectx";
+      #kns = "kubectl config set-context --current --namespace";
       kgp = "kubectl get pods";
       kl = "kubectl logs";
       nr = "nix run";

@@ -20,7 +20,7 @@
     postgresql
     kubectx
     kubectl-view-secret
-    pkgsTeleport.teleport_12
+    pkgsTeleport.teleport_15
     azure-cli
     terraform
     kdePackages.xwaylandvideobridge
@@ -40,6 +40,9 @@
     argo-workflows
     azure-storage-azcopy
     gh
+    kubectx
+    kns
+    yq
   ];
   
   systemd = { packages = [ pkgs.pritunl-client ]; targets = { multi-user = { wants = [ "pritunl-client.service" ]; }; }; }; 

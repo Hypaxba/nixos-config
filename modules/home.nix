@@ -25,6 +25,7 @@
     playerctl
     mako
     hyprshot
+    obs-studio
   ];
 
   programs.git = {
@@ -33,7 +34,7 @@
     userName = "Baptiste Fontaine";
     signing = {
       key = "0F52C374F0E6FA6BE68140D0A6A2FCF37E96351E";
-      signByDefault = true;
+      signByDefault = false;
     };
   };
 

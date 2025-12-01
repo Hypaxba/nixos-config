@@ -79,7 +79,10 @@
       vesktop
       wireshark
       wireguard-tools
-      xwaylandvideobridge
+      texmaker
+      texliveSmall
+      anki
+      azure-cli
     ];
   };
 

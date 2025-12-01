@@ -1,0 +1,98 @@
+{
+  buildTeleport,
+  buildGo124Module,
+  wasm-bindgen-cli_0_2_99,
+  withRdpClient ? true,
+  extPatches ? [ ],
+  lib,
+  pkgs,
+}:
+
+(buildTeleport {
+  version = "15.5.4";
+  hash = "sha256-iYSh8cpdumeJ480dPBfsuE9zDe5WFBCZHo+N3I6sIhM=";
+  vendorHash = "";
+  pnpmHash = "sha256-6sThtwACNEdV0fleaQf3iMmFxPsd0AshYeYZUatFMcg=";
+  cargoHash = "sha256-aXKrUo+Q9gK09TP9W2PQ3TjDwBtIlUopZL6AJVAiszE=";
+
+  wasm-bindgen-cli = wasm-bindgen-cli_0_2_99;
+  buildGoModule = buildGo124Module;
+  inherit withRdpClient extPatches;
+}).overrideAttrs (old: let 
+  version = "15.5.4";
+  hash = "sha256-iYSh8cpdumeJ480dPBfsuE9zDe5WFBCZHo+N3I6sIhM=";
+  src = pkgs.fetchFromGitHub {
+    owner = "gravitational";
+    repo = "teleport";
+    rev = "v${version}";
+    inherit hash;
+  };
+  fetchYarnDeps = pkgs.fetchYarnDeps;
+  yarnOfflineCache = fetchYarnDeps {
+    yarnLock = "${src}/yarn.lock";
+    hash = "sha256-iYSh8cpdumeJ480dPBfsuE9zDe5WFBCZHo+N3I6sIhM=";
+  };
+  in
+  {
+      pnpmDeps = null;
+  pnpmInstallFlags = [ ];
+  preBuild = old.preBuild or "" ;
+  preConfigure = old.preConfigure or "" ;
+  postConfigure = old.postConfigure or "" ;
+  preInstall = old.preInstall or "" ;
+  postInstall = old.postInstall or "" ;
+  phases = [ "unpackPhase" "patchPhase" "buildPhase" "configurePhase" "installPhase" ];
+  nativeBuildInputs = with pkgs; [
+      binaryen
+      cargo
+      nodejs
+      rustc
+      rustc.llvmPackages.lld
+      rustPlatform.cargoSetupHook
+      wasm-bindgen-cli
+      wasm-pack
+    ];
+  # Override pnpm hook fields to empty
+   patches = lib.optional (lib.versionAtLeast version "16") [
+      ./disable-wasm-opt-for-ironrdp.patch
+    ];
+
+    configurePhase = ''
+      runHook preConfigure
+
+      export HOME=$(mktemp -d)
+
+      runHook postConfigure
+    '';
+    buildPhase = ''
+    ${lib.optionalString (lib.versionOlder version "16") ''
+      yarn config --offline set yarn-offline-mirror ${yarnOfflineCache}
+      fixup-yarn-lock yarn.lock
+
+      yarn install --offline \
+        --frozen-lockfile \
+        --ignore-engines --ignore-scripts
+      patchShebangs .
+    ''}
+
+    PATH=$PATH:$PWD/node_modules/.bin
+
+    ${
+      if lib.versionAtLeast version "15" then
+        ''
+          pushd web/packages
+          pushd shared
+          RUST_MIN_STACK=16777216 wasm-pack build ./libs/ironrdp --target web --mode no-install
+          popd
+          pushd teleport
+          vite build
+          popd
+          popd
+        ''
+      else
+        "yarn build-ui-oss"
+    }
+  '';
+   doInstallCheck = false; # No grep in script ?
+})
+

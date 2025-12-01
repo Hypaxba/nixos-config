@@ -37,6 +37,7 @@
         work-laptop = lib.nixosSystem (import ./work-laptop.nix { inherit lib system pkgset home-manager; });
       };
       formatter.${system} = pkgs.nixpkgs-fmt;
+      packages.${system}.teleport = pkgs.callPackage ./pkgs/teleport.nix {};
     };
 
 }

@@ -22,6 +22,8 @@
     settings.server = ["/test/10.243.117.7"];
   };
 
+  programs.steam.enable = true;
+
   #vm bridge
   #networking.bridges = {
   #   br0 = {

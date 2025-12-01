@@ -26,15 +26,16 @@
     playerctl
     mako
     hyprshot
+    obs-studio
   ];
 
   programs.git = {
     enable = true;
     userEmail = "baptiste.f@padoa-group.com";
     userName = "Baptiste Fontaine";
-    extraConfig = {
-      push.autoSetupRemote = true;
-      pull.rebase = true;
+    signing = {
+      key = "0F52C374F0E6FA6BE68140D0A6A2FCF37E96351E";
+      signByDefault = false;
     };
   };
 

@@ -8,7 +8,7 @@
     gamescope
     mixxx
     prismlauncher
-    atlauncher
+    pkgsUnstable.atlauncher
     jdk17
     pkgsUnstable.nexusmods-app
   ];

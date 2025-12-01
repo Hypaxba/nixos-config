@@ -75,6 +75,10 @@
       vesktop
       wireshark
       wireguard-tools
+      texmaker
+      texliveSmall
+      anki
+      azure-cli
     ];
   };
 

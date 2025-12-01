@@ -6,10 +6,10 @@
       type = "github";
       owner = "NixOS";
       repo = "nixpkgs";
-      ref = "nixos-25.05";
+      ref = "nixos-25.11";
     };
     nixpkgsUnstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    home-manager.url = "github:nix-community/home-manager?ref=release-25.05";
+    home-manager.url = "github:nix-community/home-manager?ref=release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nixpkgs-teleport15.url = "github:NixOS/nixpkgs/8d62b09309bee7d119508190e4f712041265a5d6";
   };

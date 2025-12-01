@@ -31,8 +31,12 @@
 
   programs.git = {
     enable = true;
-    userEmail = "baptiste.f@padoa-group.com";
-    userName = "Baptiste Fontaine";
+    settings = {
+      user = {
+        email = "baptiste.f@padoa-group.com";
+        name = "Baptiste Fontaine";
+      };
+    };
     signing = {
       key = "0F52C374F0E6FA6BE68140D0A6A2FCF37E96351E";
       signByDefault = false;
@@ -284,7 +288,7 @@
 
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland;
+    package = pkgs.rofi;
     plugins = [
       pkgs.rofi-emoji
     ];
@@ -336,9 +340,11 @@
    };
 
   programs.ssh = {
-    enable = true;
-    forwardAgent = false;
-    controlMaster = "yes";
-    controlPersist = "10m";
+    enableDefaultConfig = false;
+    matchBlocks."*" = { 
+      forwardAgent = false;
+      controlMaster = "yes";
+      controlPersist = "10m";
+    };
   };
 }  
